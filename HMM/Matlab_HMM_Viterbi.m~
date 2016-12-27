@@ -1,0 +1,19 @@
+clear;
+trans = [0.95,0.05;
+         0.10,0.90];
+%emis = [1/6 1/6 1/6 1/6 1/6 1/6;
+  % 1/10 1/10 1/10 1/10 1/10 1/2];
+  
+  emis = [1/5 1/5 1/5 1/5 1/5];
+
+%[seq,states] = hmmgenerate(100,trans,emis);
+seq = [1 2 3 4 5 5 4 3 2 1];
+st
+estimatedStates = hmmviterbi(seq,trans,emis);
+
+[seq,states] = ...
+   hmmgenerate(100,trans,emis,...
+               'Statenames',{'fair';'loaded'});
+estimatesStates = ...
+   hmmviterbi(seq,trans,emis,...
+              'Statenames',{'fair';'loaded'});
